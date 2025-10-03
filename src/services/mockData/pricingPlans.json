@@ -1,0 +1,63 @@
+[
+  {
+    "Id": 1,
+    "name": "Starter",
+    "price": 29,
+    "description": "Perfect for freelancers and small businesses",
+    "popular": false,
+    "features": [
+      "Up to 50 invoices per month",
+      "5 clients",
+      "Basic reporting",
+      "Email support",
+      "Mobile app access",
+      "Payment tracking",
+      "Invoice templates",
+      "Tax calculations"
+    ]
+  },
+  {
+    "Id": 2,
+    "name": "Professional",
+    "price": 79,
+    "description": "For growing businesses with advanced needs",
+    "popular": true,
+    "features": [
+      "Unlimited invoices",
+      "Unlimited clients",
+      "Advanced analytics & reporting",
+      "Priority support (24/7)",
+      "Multi-currency support",
+      "Recurring billing automation",
+      "Custom branding",
+      "API access",
+      "Team collaboration (5 users)",
+      "Expense tracking",
+      "Time tracking",
+      "Client portal"
+    ]
+  },
+  {
+    "Id": 3,
+    "name": "Enterprise",
+    "price": 199,
+    "description": "For large organizations requiring customization",
+    "popular": false,
+    "features": [
+      "Everything in Professional",
+      "Unlimited team members",
+      "Dedicated account manager",
+      "Custom integrations",
+      "Advanced security features",
+      "SLA guarantee",
+      "White-label solution",
+      "Custom workflows",
+      "Advanced permissions",
+      "Audit logs",
+      "SSO authentication",
+      "Priority feature requests",
+      "Custom training sessions",
+      "Data migration assistance"
+    ]
+  }
+]

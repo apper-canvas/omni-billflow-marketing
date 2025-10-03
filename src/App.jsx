@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import HomePage from "@/components/pages/HomePage";
-
+import CheckoutPage from "@/components/pages/CheckoutPage";
+import PaymentSuccessPage from "@/components/pages/PaymentSuccessPage";
 function App() {
   return (
     <BrowserRouter>
@@ -17,8 +18,10 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <Routes>
+<Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/success" element={<PaymentSuccessPage />} />
       </Routes>
     </BrowserRouter>
   );

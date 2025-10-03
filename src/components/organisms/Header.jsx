@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/atoms/Container";
 import Logo from "@/components/atoms/Logo";
@@ -7,12 +8,11 @@ import NavLink from "@/components/molecules/NavLink";
 import ApperIcon from "@/components/ApperIcon";
 import { cn } from "@/utils/cn";
 import navigationService from "@/services/api/navigationService";
-
 export default function Header() {
+  const navigate = useNavigate();
   const [navLinks, setNavLinks] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   useEffect(() => {
     loadNavigation();
   }, []);
@@ -35,8 +35,12 @@ export default function Header() {
     }
   };
 
-  const handleMobileNavClick = () => {
+const handleMobileNavClick = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const handleGetStarted = () => {
+    navigate('/checkout');
   };
 
   return (
@@ -53,16 +57,20 @@ export default function Header() {
           <Logo />
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+<div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <NavLink key={link.Id} href={link.href}>
+              <NavLink 
+                key={link.Id} 
+                href={link.href}
+                onClick={link.href === '#pricing' ? navigationService.scrollToPricing : undefined}
+              >
                 {link.label}
               </NavLink>
             ))}
           </div>
 
-          <div className="hidden lg:block">
-            <Button size="md">Get Started</Button>
+<div className="hidden lg:block">
+            <Button size="md" onClick={handleGetStarted}>Get Started</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -105,17 +113,23 @@ export default function Header() {
                 </button>
               </div>
               <div className="flex flex-col gap-6">
-                {navLinks.map((link) => (
+{navLinks.map((link) => (
                   <a
                     key={link.Id}
                     href={link.href}
-                    onClick={handleMobileNavClick}
+                    onClick={(e) => {
+                      if (link.href === '#pricing') {
+                        e.preventDefault();
+                        navigationService.scrollToPricing();
+                      }
+                      handleMobileNavClick();
+                    }}
                     className="text-lg font-medium text-gray-700 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </a>
                 ))}
-                <Button size="md" className="mt-4 w-full">
+<Button size="md" className="mt-4 w-full" onClick={handleGetStarted}>
                   Get Started
                 </Button>
               </div>

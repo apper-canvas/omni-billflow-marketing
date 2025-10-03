@@ -6,6 +6,13 @@ const navigationService = {
   getAll: async () => {
     await delay(100);
     return [...navigationData];
+  },
+  
+  scrollToPricing: () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 };
 
